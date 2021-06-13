@@ -2,6 +2,7 @@
   "expo": {
     "name": "twitter",
     "slug": "twitter",
+    "owner": "jacksonmccluskey",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
