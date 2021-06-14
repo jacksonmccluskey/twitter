@@ -10,9 +10,9 @@ import {
     Text 
 } from '../components/Themed';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/core"
 import Colors from '../constants/Colors';
 import ProfilePicture from '../components/ProfilePicture';
-import { useNavigation } from "@react-navigation/core"
 
 export default function NewTweetScreen() {
     const navigation = useNavigation()
@@ -58,7 +58,6 @@ export default function NewTweetScreen() {
                     <TextInput 
                         value={ imageUrl }
                         onChangeText={ value => setImageUrl(value) }
-                        style={ styles.imageInput }
                         placeholder={ "Image url (optional)" }
                     />
                 </View>
@@ -100,8 +99,5 @@ const styles = StyleSheet.create({
   },
   tweetInput: {
     maxHeight: 300,
-  },
-  imageInput: {
-
   },
 });
