@@ -1,35 +1,78 @@
-import * as React from 'react';
-import { StyleSheet, Touchable } from 'react-native';
-import { View, Text } from '../components/Themed';
+import React, { useState } from 'react';
+import { 
+    StyleSheet, 
+    TouchableOpacity,
+    SafeAreaView,
+    TextInput,
+} from 'react-native';
+import { 
+    View, 
+    Text 
+} from '../components/Themed';
 import { AntDesign } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import ProfilePicture from '../components/ProfilePicture';
+import { useNavigation } from "@react-navigation/core"
 
 export default function NewTweetScreen() {
+    const navigation = useNavigation()
+
+    const onPress = () => {
+        navigation.navigate("Root")
+    }
+    
+    const [tweet, setTweet] = useState("")
+    const [imageUrl, setImageUrl] = useState("")
 
     const onPostTweet = () => {
-        console.warn("Post Tweet")
+        console.warn(`Tweet: ${tweet}`)
     }
 
     return (
-        <View style={ styles.container }>
+        <SafeAreaView style={ styles.container }>
             <View style={ styles.headerContainer }>
-                <AntDesign name={ "close" } size={ 30 } color={ Colors.light.tint } />
-                <TouchableOpacity style={ styles.button } onPress={ onPostTweet }>
+                <AntDesign 
+                    onPress={ onPress }
+                    name={ "close" } 
+                    size={ 30 } 
+                    color={ Colors.light.tint } />
+                <TouchableOpacity 
+                    style={ styles.button } 
+                    onPress={ onPostTweet }>
                     <Text style={ styles.buttonText }>
                         Tweet
                     </Text>
                 </TouchableOpacity>
             </View>
-        </View>
+            <View style={ styles.newTweetContainer }>
+                <ProfilePicture image={ "https://picsum.photos/2000" } />
+                <View style={ styles.inputContainer }>
+                    <TextInput 
+                        value={ tweet }
+                        onChangeText={ value => setTweet(value) }
+                        multiline={ true }
+                        numberOfLines={ 3 }
+                        style={ styles.tweetInput }
+                        placeholder={ "What's up?" }
+                    />
+                    <TextInput 
+                        value={ imageUrl }
+                        onChangeText={ value => setImageUrl(value) }
+                        style={ styles.imageInput }
+                        placeholder={ "Image url (optional)" }
+                    />
+                </View>
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "flex-start",
     paddingTop: 30,
+    backgroundColor: "#fff"
   },
   headerContainer: {
       width: "100%",
@@ -47,5 +90,18 @@ const styles = StyleSheet.create({
       color: "#fff",
       fontWeight: "bold",
       fontSize: 16,
-  }
+  },
+  newTweetContainer: {
+    flexDirection: "row",
+    padding: 15,
+  },
+  inputContainer: {
+    marginLeft: 10,
+  },
+  tweetInput: {
+    maxHeight: 300,
+  },
+  imageInput: {
+
+  },
 });
