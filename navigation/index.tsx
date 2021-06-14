@@ -12,6 +12,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import NewTweetScreen from '../screens/NewTweetScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -30,8 +31,9 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Root" component={ BottomTabNavigator } />
+      <Stack.Screen name="NewTweet" component={ NewTweetScreen } />
+      <Stack.Screen name="NotFound" component={ NotFoundScreen } options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
 }
