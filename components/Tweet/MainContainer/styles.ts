@@ -10,15 +10,15 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     tweetHeaderName: {
-        marginHorizontal: 5,
+        marginHorizontal: 3,
         fontWeight: "bold",
     },
     tweetHeaderUserName: {
-        marginHorizontal: 5,
+        marginHorizontal: 3,
         color: "grey",
     },
     tweetHeaderCreatedAt: {
-        marginHorizontal: 5,
+        marginHorizontal: 3,
         color: "grey",
     },
     tweetHeaderChevron: {
