@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -21,6 +21,7 @@ import {
   NotificationsNavigatorParamList,
   MessagesNavigatorParamList
 } from '../types';
+import ProfilePicture from "../components/ProfilePicture";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -81,10 +82,33 @@ function HomeNavigator() {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeScreen"
-        component={HomeScreen}
+        component={ HomeScreen }
         options={{ 
+          headerLeftContainerStyle: {
+            marginLeft: 15
+          },
+          headerRightContainerStyle: {
+            marginRight: 15
+          },
           headerTitle: () => (
-            <Ionicons name={"logo-twitter"} size={30} colors={Colors.light.tint}/>
+            <Ionicons 
+              name={"logo-twitter"} 
+              size={30} 
+              colors={Colors.light.tint} 
+            />
+          ),
+          headerRight: () => (
+            <MaterialCommunityIcons 
+              name="star-four-points-outline" 
+              size={30} 
+              colors={Colors.light.tint} 
+            />
+          ),
+          headerLeft: () => (
+            <ProfilePicture 
+              size={30}
+              image={'https://picsum.photos/2000'}
+            />
           )
         }}
       />
@@ -99,7 +123,7 @@ function SearchNavigator() {
     <SearchStack.Navigator>
       <SearchStack.Screen
         name="SearchScreen"
-        component={SearchScreen}
+        component={ SearchScreen }
         options={{ headerTitle: 'Search' }}
       />
     </SearchStack.Navigator>
@@ -113,7 +137,7 @@ function NotificationsNavigator() {
     <NotificationsStack.Navigator>
       <NotificationsStack.Screen
         name="NotificationsScreen"
-        component={NotificationsScreen}
+        component={ NotificationsScreen }
         options={{ headerTitle: 'Notifications' }}
       />
     </NotificationsStack.Navigator>
@@ -127,7 +151,7 @@ function MessagesNavigator() {
     <MessagesStack.Navigator>
       <MessagesStack.Screen
         name="MessagesScreen"
-        component={MessagesScreen}
+        component={ MessagesScreen }
         options={{ headerTitle: 'Messages' }}
       />
     </MessagesStack.Navigator>
