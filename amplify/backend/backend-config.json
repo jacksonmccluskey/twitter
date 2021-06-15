@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "twitter1cfc756c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

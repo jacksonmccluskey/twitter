@@ -15,7 +15,7 @@ const MainContainer = ({ tweet }: MainContainerProps) => (
     <View style={ styles.container }>
         <View style={ styles.tweetHeaderContainer }>
             <Text style={ styles.tweetHeaderName }>{ tweet.user.name.split(' ')[0].substring(0, 7) }...</Text>
-            <Text style={ styles.tweetHeaderUserName }>@{ tweet.user.username }</Text>
+            <Text style={ styles.tweetHeaderUserName }>@{ tweet.user.username.split(' ')[0].substring(0, 3) }...</Text>
             <Text style={ styles.tweetHeaderCreatedAt }>{ moment(tweet.createdAt).fromNow() }</Text>
             <Entypo style={ styles.tweetHeaderChevron } name={ "chevron-down" } size={ 16 } />
         </View>
